@@ -14,7 +14,7 @@
 
 name: Submit your project
 description: Show off your awesome work with Google Workspace!
-title: "[Awesome Workspace - I built something with Google Workspace"
+title: "[Awesome Workspace] - I built [repo org/repo name]!"
 labels: ["awesome-workspace"]
 body:
   - type: markdown
