@@ -20,7 +20,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        "## Required Fields"  
+        ## Required Fields
   - type: input
     id: github
     attributes:
@@ -79,7 +79,7 @@ body:
   - type: markdown
     attributes:
       value: |
-        "## Optional Fields"
+        ## Optional Fields
   - type: input
     id: marketplace
     attributes:
