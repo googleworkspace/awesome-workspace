@@ -1,0 +1,5 @@
+{
+  "github": "googleworkspace/apps-script-oauth2",
+  "languages": ["JavaScript"],
+  "apis": ["apps_script"]
+}

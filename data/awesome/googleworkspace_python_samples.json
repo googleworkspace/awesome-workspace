@@ -1,0 +1,24 @@
+{
+  "github": "googleworkspace/python-samples",
+  "languages": ["Python"],
+  "apis": [
+    "admin",
+    "apps_script",
+    "calendar",
+    "chat",
+    "classroom",
+    "cloud_identity",
+    "contacts",
+    "docs",
+    "drive",
+    "forms",
+    "gmail",
+    "cloud_search",
+    "groups",
+    "keep",
+    "sheets",
+    "slides",
+    "tasks",
+    "vault"
+  ]
+}

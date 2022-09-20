@@ -1,0 +1,24 @@
+{
+  "github": "googleworkspace/node-samples",
+  "languages": ["JavaScript", "Shell"],
+  "apis": [
+    "admin",
+    "apps_script",
+    "calendar",
+    "chat",
+    "classroom",
+    "cloud_identity",
+    "contacts",
+    "docs",
+    "drive",
+    "forms",
+    "gmail",
+    "cloud_search",
+    "groups",
+    "keep",
+    "sheets",
+    "slides",
+    "tasks",
+    "vault"
+  ]
+}

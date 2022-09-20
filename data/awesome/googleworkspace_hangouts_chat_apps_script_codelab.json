@@ -1,0 +1,5 @@
+{
+  "github": "googleworkspace/hangouts-chat-apps-script-codelab",
+  "languages": ["JavaScript"],
+  "apis": ["chat", "apps_script"]
+}

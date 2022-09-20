@@ -1,0 +1,5 @@
+{
+  "github": "googleworkspace/hangouts-chat-samples",
+  "languages": ["Java", "HTML", "Python", "JavaScript"],
+  "apis": ["chat"]
+}

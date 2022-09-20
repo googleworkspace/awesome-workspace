@@ -1,0 +1,5 @@
+{
+  "github": "googleworkspace/md2googleslides",
+  "languages": ["JavaScript"],
+  "apis": ["slides"]
+}

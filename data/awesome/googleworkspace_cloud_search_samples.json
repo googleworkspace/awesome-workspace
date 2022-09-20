@@ -1,0 +1,5 @@
+{
+  "github": "googleworkspace/cloud-search-samples",
+  "languages": ["Java", "JavaScript", "HTML"],
+  "apis": ["cloud_search"]
+}

@@ -1,0 +1,5 @@
+{
+  "github": "googleworkspace/drive-utils",
+  "languages": ["JavaScript", "HTML", "Python", "Shell"],
+  "apis": ["drive"]
+}

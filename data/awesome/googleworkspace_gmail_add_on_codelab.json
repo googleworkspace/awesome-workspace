@@ -1,0 +1,5 @@
+{
+  "github": "googleworkspace/gmail-add-on-codelab",
+  "languages": ["JavaScript"],
+  "apis": ["gmail"]
+}

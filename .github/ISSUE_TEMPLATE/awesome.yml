@@ -1,0 +1,90 @@
+# Copyright 2022 Google LLC
+#
+# Licensed under the Apache License, Version 2.0 (the "License");
+# you may not use this file except in compliance with the License.
+# You may obtain a copy of the License at
+#
+#      http://www.apache.org/licenses/LICENSE-2.0
+#
+# Unless required by applicable law or agreed to in writing, software
+# distributed under the License is distributed on an "AS IS" BASIS,
+# WITHOUT WARRANTIES OR CONDITIONS OF ANY KIND, either express or implied.
+# See the License for the specific language governing permissions and
+# limitations under the License.
+
+name: Submit your project
+description: Show off your awesome work with Google Workspace!
+title: "[Awesome Workspace - I built something with Google Workspace"
+labels: ["awesome-workspace"]
+body:
+  - type: markdown
+    attributes:
+      value: |
+        "## Required Fields"  
+  - type: input
+    id: github
+    attributes:
+      label: GitHub owner/repo
+      description: "The owner and repo of your project."
+      placeholder: e.g. googleworkspace/python-samples
+    validations:
+      required: true
+  - type: dropdown
+    id: apis
+    attributes:
+      label: Which Google Workspace APIs are you using?
+      multiple: true
+      options:
+        - admin
+        - apps_script
+        - calendar
+        - chat
+        - classroom
+        - cloud_identity
+        - contacts
+        - docs
+        - drive
+        - forms
+        - gmail
+        - cloud_search
+        - groups
+        - keep
+        - sheets
+        - slides
+        - tasks
+        - vault
+  - type: dropdown
+    id: languages
+    attributes:
+      label: Which languages are used?
+      multiple: true
+      options:
+        - C/C++
+        - C#
+        - Go
+        - HTML
+        - Java
+        - JavaScript
+        - Kotlin
+        - PHP
+        - Python
+        - Objective-C
+        - Ruby
+        - Rust
+        - Shell
+        - Swift
+        - Other
+    validations:
+      required: true 
+  - type: markdown
+    attributes:
+      value: |
+        "## Optional Fields"
+  - type: input
+    id: marketplace
+    attributes:
+      label: Marketplace URL
+      description: The URL to the Google Workspace Marketplace listing. _[parser:url]_
+      placeholder: e.g. https://workspace.google.com/marketplace/app/docusign_esignature_for_google_workspace/469176070494
+    validations:
+      required: false
