@@ -1,0 +1,7 @@
+{
+  "github": "choraria/count-von-count",
+  "apis": "apps_script, calendar, docs, drive, gmail, sheets, slides",
+  "languages": "JavaScript",
+  "marketplace": "https://workspace.google.com/marketplace/app/count_von_count/222600962484",
+  "opened_by": "choraria"
+}
