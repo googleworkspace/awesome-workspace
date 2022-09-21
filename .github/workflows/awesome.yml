@@ -54,7 +54,7 @@ jobs:
           git checkout -B ${{ env.NEW_BRANCH }}
           git add data/awesome
           git commit -m "chore: adding data for #${{ github.event.issue.number }}"
-          git push –u origin ${{ env.NEW_BRANCH }}
+          git push -–set-upstream origin ${{ env.NEW_BRANCH }}
       - name: Create Pull Request
         run: |
           gh pr create \
