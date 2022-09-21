@@ -50,11 +50,22 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   // list all files in directory
   const files = await fs.readdir(directory);
 
-  const entries = await Promise.all(
-    files.map(async (file) =>
-      fs.readFile(path.join(directory, file), "utf-8").then(JSON.parse)
+  const entries = (
+    await Promise.all(
+      files.map(async (file) =>
+        fs.readFile(path.join(directory, file), "utf-8").then(JSON.parse)
+      )
     )
-  );
+  ).map((entry: IEntry) => {
+    return {
+      ...entry,
+      languages:
+        typeof entry.languages === "string"
+          ? [entry.languages]
+          : entry.languages,
+      apis: typeof entry.apis === "string" ? [entry.apis] : entry.apis,
+    };
+  });
 
   // randomize entries
   const shuffledEntries = entries.sort(() => Math.random() - 0.5);
@@ -162,7 +173,9 @@ const Home: NextPage<Props> = ({ colors, entries, router }) => {
           />
           <link rel="icon" href={`${router.basePath}/favicon.png`} />
         </Head>
-        <a className="skip-link right-0" href='#main'>Skip to content</a>
+        <a className="skip-link right-0" href="#main">
+          Skip to content
+        </a>
 
         <header className="p-2">
           <div className="mb-2 flex flex-col sm:flex-row gap-2 sm:gap-6 py-2 items-center">
