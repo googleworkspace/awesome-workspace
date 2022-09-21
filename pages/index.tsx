@@ -45,6 +45,13 @@ interface StaticProps {
 
 type Props = WithRouterProps & StaticProps;
 
+const parseArrayOrString = (value: string | string[]): string[] => {
+  if (typeof value === "string") {
+    return value.split(",").map((s) => s.trim());
+  }
+  return value;
+};
+
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
   const directory = path.join("data", "awesome");
   // list all files in directory
@@ -56,14 +63,11 @@ export const getStaticProps: GetStaticProps<StaticProps> = async () => {
         fs.readFile(path.join(directory, file), "utf-8").then(JSON.parse)
       )
     )
-  ).map((entry: IEntry) => {
+  ).map((entry) => {
     return {
       ...entry,
-      languages:
-        typeof entry.languages === "string"
-          ? [entry.languages]
-          : entry.languages,
-      apis: typeof entry.apis === "string" ? [entry.apis] : entry.apis,
+      languages: parseArrayOrString(entry.languages),
+      apis: parseArrayOrString(entry.apis),
     };
   });
 
