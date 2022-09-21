@@ -1,0 +1,7 @@
+{
+  "github": "choraria/workbook-statistics",
+  "apis": "apps_script, sheets",
+  "languages": "JavaScript",
+  "marketplace": "https://workspace.google.com/marketplace/app/workbook_statistics/1062814409654",
+  "opened_by": "choraria"
+}
