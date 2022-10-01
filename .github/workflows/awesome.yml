@@ -45,6 +45,10 @@ jobs:
           folder: "data/awesome"
           issue-template: "awesome.yml"
           hash-property-name: "github"
+      - name: Cleanup data
+        run: |
+          sed -e "s/https:\/\/github.com\///g" -i .bak data/awesome/*.json
+          rm data/awesome/*.bak
       - name: Configure Git
         run: |
           git config user.name "${{ github.event.issue.user.login }}"
