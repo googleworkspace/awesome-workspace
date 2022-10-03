@@ -22,14 +22,11 @@ import {
   CardContent,
   IconButton,
 } from "@mui/material";
+import SortByAlphaIcon from "@mui/icons-material/SortByAlpha";
+import AddIcon from "@mui/icons-material/Add";
 import { API, IEntry, Language } from "../shared/types";
-import {
-  faPlus,
-  faArrowDownShortWide,
-  faArrowDownWideShort,
-} from "@fortawesome/free-solid-svg-icons";
+
 import { filterHref } from "../shared/utils";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { getEntries } from "../shared/entries";
 import { GetStaticProps } from "next";
 import { LanguageColorContext } from "../shared/context";
@@ -159,7 +156,7 @@ const Home: NextPage<Props> = ({ colors, entries, router }) => {
   const addProjectButton = (
     <Button
       className="bg-red-500"
-      startIcon={<FontAwesomeIcon icon={faPlus} />}
+      startIcon={<AddIcon />}
       variant="contained"
       href={newIssueURL}
     >
@@ -291,11 +288,7 @@ const Home: NextPage<Props> = ({ colors, entries, router }) => {
                   aria-label="Toggle sort order"
                   className="text-blue-600 mx-2"
                 >
-                  <FontAwesomeIcon
-                    icon={
-                      sortOrder ? faArrowDownShortWide : faArrowDownWideShort
-                    }
-                  ></FontAwesomeIcon>
+                  <SortByAlphaIcon></SortByAlphaIcon>
                 </IconButton>
               ) : null}
             </CardActions>

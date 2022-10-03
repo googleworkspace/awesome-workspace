@@ -16,9 +16,9 @@
 
 import Link from "next/link";
 import ProductIcon from "./ProductIcon";
-import { faGithub, faGoogle } from "@fortawesome/free-brands-svg-icons";
+import GoogleIcon from "@mui/icons-material/Google";
+import GitHubIcon from "@mui/icons-material/GitHub";
 import { filterHref } from "../shared/utils";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
 import { IEntry } from "../shared/types";
 import {
   Button,
@@ -105,7 +105,7 @@ const Entry = ({ github, marketplace, apis, languages }: IEntry) => {
           href={`https://github.com/${github}`}
           title="View source"
           variant="text"
-          startIcon={<FontAwesomeIcon icon={faGithub} />}
+          startIcon={<GitHubIcon />}
         >
           Source
         </Button>
@@ -114,7 +114,7 @@ const Entry = ({ github, marketplace, apis, languages }: IEntry) => {
             href={marketplace}
             title="View Marketplace Listing"
             variant="text"
-            startIcon={<FontAwesomeIcon icon={faGoogle} />}
+            startIcon={<GoogleIcon />}
           >
             Marketplace
           </Button>
