@@ -48,7 +48,6 @@ jobs:
       - name: Cleanup data
         run: |
           sed -e "s/https:\/\/github.com\///g" -i data/awesome/*.json
-          rm data/awesome/*.bak
       - name: Configure Git
         run: |
           git config user.name "${{ github.event.issue.user.login }}"
