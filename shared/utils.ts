@@ -36,3 +36,10 @@ export const filterHref = ({
 
   return `/?${params.toString()}`;
 };
+
+export const parseArrayOrString = (value: string | string[]): string[] => {
+  if (typeof value === "string") {
+    return value.split(",").map((s) => s.trim());
+  }
+  return value;
+};

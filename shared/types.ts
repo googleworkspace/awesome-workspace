@@ -19,6 +19,7 @@ export interface IEntry {
   apis: API[];
   languages: Language[];
   marketplace?: string;
+  added: string;
 }
 
 export enum API {

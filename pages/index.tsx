@@ -14,25 +14,35 @@
  * limitations under the License.
  */
 
+import {
+  Alert,
+  Button,
+  Card,
+  CardActions,
+  CardContent,
+  IconButton,
+} from "@mui/material";
+import { API, IEntry, Language } from "../shared/types";
+import {
+  faPlus,
+  faArrowDownShortWide,
+  faArrowDownWideShort,
+} from "@fortawesome/free-solid-svg-icons";
+import { filterHref } from "../shared/utils";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { getEntries } from "../shared/entries";
+import { GetStaticProps } from "next";
+import { LanguageColorContext } from "../shared/context";
+import { NextRouter, withRouter } from "next/router";
+import { useState } from "react";
 import APIFilter from "../components/APIFilter";
 import Entry from "../components/Entry";
-import fs from "fs/promises";
 import Head from "next/head";
 import Image from "next/image";
 import Link from "next/link";
-import path from "path";
-import YAML from "yaml";
-import { Alert, Button, Card, CardActions, CardContent } from "@mui/material";
-import { API, IEntry, Language } from "../shared/types";
-import { filterHref } from "../shared/utils";
-import { GetStaticProps } from "next";
-import { NextRouter, withRouter } from "next/router";
-import { useState } from "react";
-import { faPlus } from "@fortawesome/free-solid-svg-icons";
-import type { NextPage } from "next";
-import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
-import { LanguageColorContext } from "../shared/context";
 import LinkButton from "../components/LinkButton";
+import type { NextPage } from "next";
+import YAML from "yaml";
 
 interface WithRouterProps {
   router: NextRouter;
@@ -45,31 +55,8 @@ interface StaticProps {
 
 type Props = WithRouterProps & StaticProps;
 
-const parseArrayOrString = (value: string | string[]): string[] => {
-  if (typeof value === "string") {
-    return value.split(",").map((s) => s.trim());
-  }
-  return value;
-};
-
 export const getStaticProps: GetStaticProps<StaticProps> = async () => {
-  const directory = path.join("data", "awesome");
-  // list all files in directory
-  const files = await fs.readdir(directory);
-
-  const entries = (
-    await Promise.all(
-      files.map(async (file) =>
-        fs.readFile(path.join(directory, file), "utf-8").then(JSON.parse)
-      )
-    )
-  ).map((entry) => {
-    return {
-      ...entry,
-      languages: parseArrayOrString(entry.languages),
-      apis: parseArrayOrString(entry.apis),
-    };
-  });
+  const entries = await getEntries();
 
   // randomize entries
   const shuffledEntries = entries.sort(() => Math.random() - 0.5);
@@ -154,6 +141,20 @@ const Home: NextPage<Props> = ({ colors, entries, router }) => {
   });
 
   const [limit, setLimit] = useState(12);
+  const [sortBy, setSortBy] = useState<"github" | "random" | "added">("random");
+  const [sortOrder, setSortOrder] = useState<boolean>(true);
+
+  const sort = (a: IEntry, b: IEntry) => {
+    let result = 0;
+    if (sortBy === "github") {
+      result = a.github.localeCompare(b.github);
+    }
+    if (sortBy === "added") {
+      result = a.added.localeCompare(b.added);
+    }
+
+    return sortOrder ? result : -result;
+  };
 
   const addProjectButton = (
     <Button
@@ -270,6 +271,34 @@ const Home: NextPage<Props> = ({ colors, entries, router }) => {
               </div>
             </CardContent>
 
+            <CardActions className="border-t-grey-200 border-t p-4">
+              <label htmlFor="sortBy" className="text-sm mr-4">
+                Sort:
+              </label>
+              <select
+                id="sortBy"
+                value={sortBy}
+                onChange={(e) => setSortBy(e.target.value as any)}
+                className="bg-gray-50 border rounded focus:ring-blue-500 focus:border-blue-500 p-2 min-w-[15%]"
+              >
+                <option></option>
+                <option value="added">Date Added</option>
+                <option value="github">Name</option>
+              </select>
+              {sortBy ? (
+                <IconButton
+                  onClick={() => setSortOrder(!sortOrder)}
+                  aria-label="Toggle sort order"
+                  className="text-blue-600 mx-2"
+                >
+                  <FontAwesomeIcon
+                    icon={
+                      sortOrder ? faArrowDownShortWide : faArrowDownWideShort
+                    }
+                  ></FontAwesomeIcon>
+                </IconButton>
+              ) : null}
+            </CardActions>
             {apis.length || languages.length || marketplace ? (
               <CardActions className="border-t-grey-200 border-t p-4">
                 <Link href={router.pathname}>
@@ -288,9 +317,12 @@ const Home: NextPage<Props> = ({ colors, entries, router }) => {
         </nav>
         <main id="main">
           <div className="flex flex-wrap gap-4 mb-12">
-            {filtered.slice(0, limit).map((entry) => (
-              <Entry key={entry.github} {...entry} />
-            ))}
+            {filtered
+              .sort(sort)
+              .slice(0, limit)
+              .map((entry) => (
+                <Entry key={entry.github} {...entry} />
+              ))}
           </div>
           <div className="flex flex-col items-center gap-4">
             {filtered.length > limit ? (
