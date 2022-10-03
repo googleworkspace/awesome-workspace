@@ -20,7 +20,7 @@ on:
       - opened
       - edited
       - reopened
-      - labeled
+      - labeled    
 
 concurrency:
   group: awesome-${{ github.event.issue.number }}
@@ -47,7 +47,7 @@ jobs:
           hash-property-name: "github"
       - name: Cleanup data
         run: |
-          sed -e "s/https:\/\/github.com\///g" -i .bak data/awesome/*.json
+          sed -e "s/https:\/\/github.com\///g" -i data/awesome/*.json
           rm data/awesome/*.bak
       - name: Configure Git
         run: |
