@@ -15,7 +15,7 @@
     "@mui/icons-material": "^5.10.6",
     "@mui/material": "^5.9.2",
     "execa": "^6.1.0",
-    "next": "12.2.4",
+    "next": "14.2.26",
     "react": "18.2.0",
     "react-dom": "18.2.0",
     "yaml": "^2.2.2"
