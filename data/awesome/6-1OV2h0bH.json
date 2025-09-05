@@ -1,0 +1,7 @@
+{
+  "github": "MaksymStoianov/appsscript-boot",
+  "apis": "apps_script, docs, forms, sheets, slides",
+  "languages": "JavaScript",
+  "marketplace": "",
+  "opened_by": "MaksymStoianov"
+}
