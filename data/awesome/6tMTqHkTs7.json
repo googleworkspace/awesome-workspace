@@ -1,0 +1,7 @@
+{
+  "github": "MaksymStoianov/appsscript-utils",
+  "apis": "apps_script, admin, docs, drive, forms, gmail, slides, sheets",
+  "languages": "JavaScript, Other",
+  "marketplace": "",
+  "opened_by": "MaksymStoianov"
+}
