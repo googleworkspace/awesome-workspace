@@ -1,0 +1,7 @@
+{
+  "github": "doitintl/DoiT-AdminPulse-for-Workspace",
+  "apis": "admin, cloud_identity, apps_script, drive, groups, sheets",
+  "languages": "JavaScript",
+  "marketplace": "https://workspace.google.com/marketplace/app/doit_adminpulse_for_workspace/639424393187",
+  "opened_by": "dchristlieb"
+}
